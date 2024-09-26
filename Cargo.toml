@@ -1,5 +1,5 @@
 [package]
-name = "sort-util"
+name = "sort_util"
 version = "0.1.0"
 authors = ["Bill Jin <bzyjin@gmail.com>"]
 edition = "2021"

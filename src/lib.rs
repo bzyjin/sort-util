@@ -50,3 +50,26 @@ impl<T> GenerateSlice<T> for *mut T {
         core::slice::from_raw_parts_mut(self, end.sub_ptr(self))
     }
 }
+
+/// Flag for indicating the result of a sorting operation.
+#[derive(PartialEq, Eq)]
+pub enum Sorted {
+    /// Sorted successfully.
+    Done,
+    /// Could not sort.
+    Fail,
+}
+
+impl Sorted {
+    /// Propogate a `Done` value or return the result of calling `f()` with lazy evaluation.
+    /// Associative and commutative.
+    pub fn or(self, mut f: impl FnMut() -> Self) -> Self {
+        if self == Self::Done { self } else { f() }
+    }
+
+    /// Propogate a `Fail` value or return the result of calling `f()` with lazy evaluation.
+    /// Associative and commutative.
+    pub fn and(self, mut f: impl FnMut() -> Self) -> Self {
+        if self == Self::Fail { self } else { f() }
+    }
+}

@@ -1,14 +1,14 @@
 #[macro_export]
 macro_rules! impl_sort_interface {
     (
-        def $pdef:ident => $ldef:expr,
-        min $pmin:ident => $lmin:expr,
-        max $pmax:ident => $lmax:expr,
+        def $pdef:pat => $ldef:expr,
+        min $pmin:pat => $lmin:expr,
+        max $pmax:pat => $lmax:expr,
         $sort:expr
     ) => {
         use core::cmp::Ordering;
 
-        use sort_util::buffer::{AsSliceMut};
+        use sort_util::buffer::{self, AsSliceMut};
 
         #[inline(always)]
         fn default_buffer_for<T>($pdef: &[T]) -> impl AsSliceMut<T> {
@@ -76,3 +76,6 @@ macro_rules! impl_sort_interface {
         }
     }
 }
+
+#[allow(unused_imports)]
+pub use impl_sort_interface;

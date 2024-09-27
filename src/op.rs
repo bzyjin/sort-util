@@ -1,7 +1,7 @@
 use core::{ptr, slice};
 
 /// Return the ceiling of the binary logarithm of `x`.
-pub fn log2_ceil(x: usize) -> usize {
+pub const fn log2_ceil(x: usize) -> usize {
     x.ilog2() as usize + !x.is_power_of_two() as usize
 }
 

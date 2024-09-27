@@ -1,4 +1,4 @@
-#[allow(unused_macros)]
+#[macro_export]
 macro_rules! impl_sort_interface {
     (
         def $pdef:ident => $ldef:expr,
@@ -76,6 +76,3 @@ macro_rules! impl_sort_interface {
         }
     }
 }
-
-#[allow(unused_imports)]
-pub(crate) use impl_sort_interface;

@@ -2,7 +2,7 @@ use core::{ptr, slice};
 
 /// Return the ceiling of the binary logarithm of `x`.
 pub fn log2_ceil(x: usize) -> usize {
-    x.ilog2() as usize + ((x & (x - 1)) != 0) as usize
+    x.ilog2() as usize + !x.is_power_of_two() as usize
 }
 
 /// Rotate `n` elements to the left by `offset` starting at `s`.

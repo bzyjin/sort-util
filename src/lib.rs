@@ -2,7 +2,6 @@
 
 pub mod buffer;
 pub mod op;
-pub mod template;
 
 /// An extension trait to serve as syntax sugar for "immutable decomposition" operations.
 pub trait Raw<T> {

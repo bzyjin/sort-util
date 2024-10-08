@@ -1,4 +1,4 @@
-#![feature(maybe_uninit_slice, ptr_sub_ptr)]
+#![no_std]
 
 pub mod buffer;
 pub mod op;
@@ -47,7 +47,7 @@ impl<T> GenerateSlice<T> for *mut T {
 
     /// Return a slice of the elements starting at `self` and ending before `end`.
     unsafe fn to<'a>(self, end: Self) -> &'a mut [T] {
-        core::slice::from_raw_parts_mut(self, end.sub_ptr(self))
+        core::slice::from_raw_parts_mut(self, end.offset_from(self) as usize)
     }
 }
 
